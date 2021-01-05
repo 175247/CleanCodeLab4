@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lab4AdditionCalculationService.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AdditionCalculationsController : Controller
     {
         [HttpGet]
-        public int Add(int firstNumber, int secondNumber)
+        public decimal Add([FromQuery] decimal firstNumber, [FromQuery] decimal secondNumber)
         {
             return firstNumber + secondNumber;
         }

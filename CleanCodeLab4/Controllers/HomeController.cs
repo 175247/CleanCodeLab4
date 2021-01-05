@@ -11,11 +11,14 @@ namespace CleanCodeLab4.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+
+        }
+
+        public string Calculate(string meansOfCalculation, string firstNumber, string secondNumber)
+        {
+            return "";
         }
 
         public IActionResult Index()

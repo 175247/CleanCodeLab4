@@ -1,8 +1,35 @@
-﻿@{
+﻿@model string
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <form asp-action="Calculate" method="post">
+        <label>Add:</label>
+        <input type="hidden" name="meansOfCalculation" value="addition" />
+        <input type="number" name="firstNumber" />
+        <label> with </label>
+        <input type="number" name="secondNumber" />
+        <input type="submit" value="Kör!" />
+    </form>
+    <form asp-action="Calculate" method="post">
+        <label>Divide:</label>
+        <input type="hidden" name="meansOfCalculation" value="division" />
+        <input type="number" name="firstNumber" />
+        <label> by </label>
+        <input type="number" name="secondNumber" />
+        <input type="submit" value="Kör!" />
+    </form>
+    <form asp-action="Calculate" method="post">
+        <label>Multiply:</label>
+        <input type="hidden" name="meansOfCalculation" value="multiplication" />
+        <input type="number" name="firstNumber" />
+        <label> by </label>
+        <input type="number" name="secondNumber" />
+        <input type="submit" value="Kör!" />
+    </form>
+    <label>@Model</label>
 </div>

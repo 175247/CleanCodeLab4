@@ -20,11 +20,6 @@ namespace CleanCodeLab4.Controllers
             _httpClient = httpClient;
         }
 
-        public HomeController()
-        {
-
-        }
-
         public async Task<IActionResult> Calculate(string meansOfCalculation, decimal firstNumber, decimal secondNumber)
         {
             var client = _httpClient.CreateClient();
@@ -37,7 +32,7 @@ namespace CleanCodeLab4.Controllers
             return View("Index");
         }
 
-        public HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
+        private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
         {
             var baseUri = "https://localhost:49159/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
             var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
@@ -46,7 +41,7 @@ namespace CleanCodeLab4.Controllers
             return request;
         }
 
-        public string ChangeStringValue(string meansOfCalculation)
+        private string ChangeStringValue(string meansOfCalculation)
         {
             if (meansOfCalculation == "addition")
             {

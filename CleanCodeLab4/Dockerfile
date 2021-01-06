@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["CleanCodeLab4/CleanCodeLab4.csproj", "CleanCodeLab4/"]
+COPY ["Lab4AdditionCalculationService/Lab4AdditionCalculationService.csproj", "Lab4AdditionCalculationService/"]
 RUN dotnet restore "CleanCodeLab4/CleanCodeLab4.csproj"
 COPY . .
 WORKDIR "/src/CleanCodeLab4"

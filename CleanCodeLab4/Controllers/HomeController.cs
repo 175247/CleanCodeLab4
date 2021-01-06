@@ -14,22 +14,40 @@ namespace CleanCodeLab4.Controllers
     public class HomeController : Controller
     {
         private readonly IHttpClientFactory _httpClient;
+        private readonly HttpClient _client;
+
+        public HomeController()
+        {
+
+        }
 
         public HomeController(IHttpClientFactory httpClient)
         {
             _httpClient = httpClient;
+            _client = _httpClient.CreateClient();
         }
 
         public async Task<IActionResult> Calculate(string meansOfCalculation, decimal firstNumber, decimal secondNumber)
         {
-            var client = _httpClient.CreateClient();
             var request = CreateHttpRequest(HttpMethod.Get, firstNumber, secondNumber);
-            var response = await client.SendAsync(request);
-            var content = await response.Content.ReadAsStringAsync();
-            meansOfCalculation = ChangeStringValue(meansOfCalculation);
-            var result = string.Format("{0} {1} {2} = {3}", firstNumber, meansOfCalculation, secondNumber, content);
+            var responseContent = await SendRequestAndReadResponse(request);
+            var result = HandleResponse(meansOfCalculation, firstNumber, secondNumber, responseContent);
             TempData["result"] = result;
             return View("Index");
+        }
+
+        private async Task<string> SendRequestAndReadResponse(HttpRequestMessage request)
+        {
+            var response = await _client.SendAsync(request);
+            var content = await response.Content.ReadAsStringAsync();
+            return content;
+        }
+
+        public string HandleResponse(string meansOfCalculation, decimal firstNumber, decimal secondNumber, string responseContent)
+        {
+            meansOfCalculation = ChangeStringValue(meansOfCalculation);
+            var result = string.Format("{0} {1} {2} = {3}", firstNumber, meansOfCalculation, secondNumber, responseContent);
+            return result;
         }
 
         private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)

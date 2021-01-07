@@ -34,6 +34,14 @@ namespace CleanCodeLab4.Controllers
             TempData["result"] = result;
             return View("Index");
         }
+        private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
+        {
+            var baseUri = "http://backend/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
+            var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
+            var requestUri = baseUri + query;
+            var request = new HttpRequestMessage(httpMethod, requestUri);
+            return request;
+        }
 
         private async Task<string> SendRequestAndReadResponse(HttpRequestMessage request)
         {
@@ -49,14 +57,6 @@ namespace CleanCodeLab4.Controllers
             return result;
         }
 
-        private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
-        {
-            var baseUri = "http://backend:80/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
-            var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
-            var requestUri = baseUri + query;
-            var request = new HttpRequestMessage(httpMethod, requestUri);
-            return request;
-        }
 
         private string ChangeStringValue(string meansOfCalculation)
         {

@@ -16,10 +16,10 @@ namespace CleanCodeLab4.Controllers
         private readonly IHttpClientFactory _httpClient;
         private readonly HttpClient _client;
 
-        public HomeController()
-        {
+        //public HomeController()
+        //{
 
-        }
+        //}
 
         public HomeController(IHttpClientFactory httpClient)
         {
@@ -43,7 +43,7 @@ namespace CleanCodeLab4.Controllers
             return content;
         }
 
-        public string HandleResponse(string meansOfCalculation, decimal firstNumber, decimal secondNumber, string responseContent)
+        private string HandleResponse(string meansOfCalculation, decimal firstNumber, decimal secondNumber, string responseContent)
         {
             meansOfCalculation = ChangeStringValue(meansOfCalculation);
             var result = string.Format("{0} {1} {2} = {3}", firstNumber, meansOfCalculation, secondNumber, responseContent);

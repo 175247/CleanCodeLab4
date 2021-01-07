@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanCodeLab4Tests", "Clean
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A22CE2B1-545A-4B74-ADA6-3D137961F9A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4DivisionCalculationService", "Lab4DivisionCalculationService\Lab4DivisionCalculationService.csproj", "{A0141241-6808-4CEB-BAEF-590A9610FDF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4MultiplicationCalculationService", "Lab4MultiplicationCalculationService\Lab4MultiplicationCalculationService.csproj", "{42DD4553-F789-4297-8824-EC3EE7CD32E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A22CE2B1-545A-4B74-ADA6-3D137961F9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A22CE2B1-545A-4B74-ADA6-3D137961F9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A22CE2B1-545A-4B74-ADA6-3D137961F9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0141241-6808-4CEB-BAEF-590A9610FDF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0141241-6808-4CEB-BAEF-590A9610FDF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0141241-6808-4CEB-BAEF-590A9610FDF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0141241-6808-4CEB-BAEF-590A9610FDF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

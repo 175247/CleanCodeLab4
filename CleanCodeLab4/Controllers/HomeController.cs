@@ -66,13 +66,20 @@ namespace CleanCodeLab4.Controllers
             {
                 return meansOfCalculation = "+";
             }
-            else if (meansOfCalculation == "divison")
+            
+            if (meansOfCalculation == "division")
             {
                 return meansOfCalculation = "/";
             }
-            else
+
+            if (meansOfCalculation == "multiplication")
             {
                 return meansOfCalculation = "*";
+            }
+
+            else
+            {
+                return "invalid input";
             }
         }
 

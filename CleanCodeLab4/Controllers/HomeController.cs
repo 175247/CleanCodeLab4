@@ -28,15 +28,17 @@ namespace CleanCodeLab4.Controllers
 
         public async Task<IActionResult> Calculate(string meansOfCalculation, decimal firstNumber, decimal secondNumber)
         {
-            var request = CreateHttpRequest(HttpMethod.Get, firstNumber, secondNumber);
+            var targetEndpoint = meansOfCalculation;
+            var request = CreateHttpRequest(HttpMethod.Get, targetEndpoint, firstNumber, secondNumber);
             var responseContent = await SendRequestAndReadResponse(request);
             var result = HandleResponse(meansOfCalculation, firstNumber, secondNumber, responseContent);
             TempData["result"] = result;
             return View("Index");
         }
-        private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
+
+        private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, string targetEndpoint, decimal firstNumber, decimal secondNumber)
         {
-            var baseUri = "http://backend/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
+            var baseUri = $"http://{targetEndpoint}/api/calculations";
             var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
             var requestUri = baseUri + query;
             var request = new HttpRequestMessage(httpMethod, requestUri);

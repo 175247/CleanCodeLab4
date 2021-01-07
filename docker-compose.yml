@@ -7,11 +7,9 @@ services:
       context: .
       dockerfile: CleanCodeLab4/Dockerfile
 
-  backend:
+  addition:
     image: ${DOCKER_REGISTRY-}lab4additioncalculationservice
     build:
       context: .
       dockerfile: Lab4AdditionCalculationService/Dockerfile
-    ports:
-      - 8080:80
 

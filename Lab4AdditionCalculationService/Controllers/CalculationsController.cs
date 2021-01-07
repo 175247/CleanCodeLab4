@@ -8,7 +8,7 @@ namespace Lab4AdditionCalculationService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdditionCalculationsController : Controller
+    public class CalculationsController : Controller
     {
         [HttpGet]
         public decimal Add([FromQuery] decimal firstNumber, [FromQuery] decimal secondNumber)

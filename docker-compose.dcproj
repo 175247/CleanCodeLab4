@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>a558ce03-f2f0-4f9f-94d3-bf57a0ee4fc7</ProjectGuid>
+    <ProjectGuid>a22ce2b1-545a-4b74-ada6-3d137961f9a8</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>cleancodelab4</DockerServiceName>

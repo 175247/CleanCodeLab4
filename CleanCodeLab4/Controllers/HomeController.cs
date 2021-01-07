@@ -64,10 +64,12 @@ namespace CleanCodeLab4.Controllers
             {
                 return meansOfCalculation = "+";
             }
+
             else if (meansOfCalculation == "divison")
             {
                 return meansOfCalculation = "/";
             }
+
             else
             {
                 return meansOfCalculation = "*";

@@ -1,8 +1,17 @@
 version: '3.4'
 
 services:
-  frontend:
+  cleancodelab4:
     image: ${DOCKER_REGISTRY-}cleancodelab4
     build:
       context: .
       dockerfile: CleanCodeLab4/Dockerfile
+
+  backend:
+    image: ${DOCKER_REGISTRY-}lab4additioncalculationservice
+    build:
+      context: .
+      dockerfile: Lab4AdditionCalculationService/Dockerfile
+    ports:
+      - 8080:80
+

@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lab4AdditionCalculationService\Lab4AdditionCalculationService.csproj" />
+    <None Update="..\.dockerignore">
+      <DependentUpon>dockerfile</DependentUpon>
+    </None>
   </ItemGroup>
 
 </Project>

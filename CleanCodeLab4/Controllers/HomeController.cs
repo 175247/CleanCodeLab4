@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Lab4AdditionCalculationService.Controllers;
 using System.Net.Http;
 
 namespace CleanCodeLab4.Controllers
@@ -52,7 +51,7 @@ namespace CleanCodeLab4.Controllers
 
         private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, decimal firstNumber, decimal secondNumber)
         {
-            var baseUri = "https://localhost:49159/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
+            var baseUri = "http://backend:80/api/additioncalculations"; // Edit this to target the alias/host-name for the service in docker-compose.
             var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
             var requestUri = baseUri + query;
             var request = new HttpRequestMessage(httpMethod, requestUri);

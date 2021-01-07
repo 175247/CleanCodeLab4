@@ -36,7 +36,7 @@ namespace Lab4AdditionCalculationService
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

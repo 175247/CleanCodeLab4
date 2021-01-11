@@ -6,11 +6,11 @@ namespace AdditionCalculationTests
     [TestClass]
     public class AdditionCalculationTests
     {
-        private readonly AdditionCalculationsController _calculator;
+        private readonly CalculationsController _calculator;
 
         public AdditionCalculationTests()
         {
-            _calculator = new AdditionCalculationsController();
+            _calculator = new CalculationsController();
         }
 
         [TestMethod]

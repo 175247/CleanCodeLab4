@@ -1,20 +1,16 @@
 ﻿using CleanCodeLab4.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Lab4Models;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace CleanCodeLab4.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    //[Route("api/[controller]")]
+    //[ApiController]
     public class HomeController : Controller
     {
         private readonly IHttpClientFactory _httpClient;
@@ -22,9 +18,9 @@ namespace CleanCodeLab4.Controllers
 
         private Dictionary<string, string> OperatorTable { get; set; } = new Dictionary<string, string>
         {
-            {"addition", "localhost:5001" },
-            {"division", "localhost:5002" },
-            {"multiplication", "localhost:5003" },
+            {"addition", "addition" },
+            {"division", "division" },
+            {"multiplication", "multiplication" },
         };
 
         private Dictionary<string, string> OperatorSymbolTable { get; set; } = new Dictionary<string, string>
@@ -40,8 +36,8 @@ namespace CleanCodeLab4.Controllers
             _client = _httpClient.CreateClient();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Calculate([FromQuery] string meansOfCalculation, [FromQuery] int firstNumber, [FromQuery] int secondNumber)
+        //[HttpGet]
+        public async Task<IActionResult> Calculate(string meansOfCalculation, int firstNumber, int secondNumber)
         {
             if (!OperatorTable.ContainsKey(meansOfCalculation)) 
             {
@@ -63,7 +59,10 @@ namespace CleanCodeLab4.Controllers
 
             await _client.SendAsync(saveRequest);
 
-            return new OkObjectResult(result);
+            TempData["result"] = result;
+            return View("Index");
+
+            //return new OkObjectResult(result);
         } 
 
         private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, string targetEndpoint, decimal firstNumber, decimal secondNumber)
@@ -77,7 +76,7 @@ namespace CleanCodeLab4.Controllers
 
         private HttpRequestMessage SendResultToDatabase (Calculation calculation)
         {
-            var baseUri = "http://localhost:5004/api/calculations";
+            var baseUri = "http://mysql/api/calculations";
             var request = new HttpRequestMessage(HttpMethod.Post, baseUri);
             request.Content = new StringContent(JsonSerializer.Serialize(calculation));
             

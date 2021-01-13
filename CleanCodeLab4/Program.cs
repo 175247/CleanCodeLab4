@@ -1,12 +1,5 @@
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CleanCodeLab4
 {
@@ -22,7 +15,7 @@ namespace CleanCodeLab4
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://0.0.0.0:5000");
+                    webBuilder.UseUrls("http://0.0.0.0:80");
                 });
     }
 }

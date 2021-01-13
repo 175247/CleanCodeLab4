@@ -1,5 +1,3 @@
-using System;
-
 namespace CleanCodeLab4.Models
 {
     public class ErrorViewModel

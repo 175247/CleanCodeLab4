@@ -3,58 +3,52 @@ version: '3.4'
 services:
   cleancodelab4:
     image: ${DOCKER_REGISTRY-}cleancodelab4
+    networks:
+      - Lab4Network
     build:
       context: .
       dockerfile: ./CleanCodeLab4/Dockerfile
-    ports:
-      - 5000:5000
-    environment:
-      ASPNETCORE_URLS: http://+:5000
+    expose:
+      - 80
 
   addition:
     image: ${DOCKER_REGISTRY-}lab4additioncalculationservice
+    networks:
+      - Lab4Network
     build:
       context: ./Lab4AdditionCalculationService
       dockerfile: Dockerfile
-    ports:
-      - 5001:5001
-    environment:
-      ASPNETCORE_URLS: http://+:5000
 
   division:
     image: ${DOCKER_REGISTRY-}lab4divisioncalculationservice
+    networks:
+      - Lab4Network
     build:
       context: ./Lab4DivisionCalculationService
       dockerfile: Dockerfile
-    ports:
-      - 5002:5002
-    environment:
-      ASPNETCORE_URLS: http://+:5000
 
   multiplication:
     image: ${DOCKER_REGISTRY-}lab4multiplicationcalculationservice
+    networks:
+      - Lab4Network
     build:
       context: ./Lab4MultiplicationCalculationService
       dockerfile: Dockerfile
-    ports:
-      - 5003:5003
-    environment:
-      ASPNETCORE_URLS: http://+:5000
 
   mysql:
     image: ${DOCKER_REGISTRY-}lab4mysql
+    networks:
+      - Lab4Network
     depends_on:
       - "db"
     build:
       context: .
       dockerfile: ./Lab4MySql/Dockerfile
-    ports:
-      - 5004:5004
-    environment:
-      - ASPNETCORE_URLS=http://+:5000
 
   db:
     image: mysql
+    networks:
+      - Lab4Network
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -68,6 +62,11 @@ services:
 
   adminer:
     image: adminer
+    networks:
+      - Lab4Network
     restart: always
     ports:
       - 8080:8080
+
+networks:
+  Lab4Network: {}

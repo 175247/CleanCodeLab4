@@ -1,4 +1,3 @@
-using Lab4MySql;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -8,7 +7,7 @@ namespace Lab4MySql
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().CreateDatabase<CalculationDbContext>().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -16,7 +15,7 @@ namespace Lab4MySql
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://0.0.0.0:5004");
+                    webBuilder.UseUrls("http://0.0.0.0:80");
                 });
     }
 }

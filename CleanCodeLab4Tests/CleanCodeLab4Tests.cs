@@ -1,7 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CleanCodeLab4.Controllers;
-using System.Net.Http;
-using CleanCodeLab4;
 
 namespace CleanCodeLab4Tests
 {

@@ -17,9 +17,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4MultiplicationCalculati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4MySql", "Lab4MySql\Lab4MySql.csproj", "{6F3FE565-89AB-42CD-B0C7-8606E547E601}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4Models", "Lab4Models\Lab4Models.csproj", "{ED0B3A51-C0D6-4288-AC7A-3D9E8DDDBA7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4Models", "Lab4Models\Lab4Models.csproj", "{ED0B3A51-C0D6-4288-AC7A-3D9E8DDDBA7F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculationTests", "CalculationTests\CalculationTests.csproj", "{BE087B51-132C-4D1E-8235-ACDDF228C8C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BAA5905A-A276-4C31-A346-6585282D9001}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{243BEEBF-7CBE-4321-B2E6-F07542D33082}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +72,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{055F0EC1-FE46-4EBD-8649-5E5831EBF484} = {243BEEBF-7CBE-4321-B2E6-F07542D33082}
+		{BE087B51-132C-4D1E-8235-ACDDF228C8C3} = {243BEEBF-7CBE-4321-B2E6-F07542D33082}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D6BB012-F339-4BF9-9EE2-C69B6B6AD947}

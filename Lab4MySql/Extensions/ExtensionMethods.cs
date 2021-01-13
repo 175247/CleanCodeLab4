@@ -1,19 +1,16 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Lab4MySql
 {
     public static class ExtensionMethods
     {
-        public static IWebHost CreateDatabase<T>(this IWebHost webHost) where T : DbContext
+        public static IHost CreateDatabase<T>(this IHost host) where T : DbContext
         {
-            using (var scope = webHost.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
@@ -29,7 +26,7 @@ namespace Lab4MySql
                 }
             }
 
-            return webHost;
+            return host;
         }
     }
 }

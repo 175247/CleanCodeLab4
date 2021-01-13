@@ -14,29 +14,29 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-    <form asp-action="Calculate" method="post">
+    <form asp-action="Calculate" id="additionCalculationsForm" method="post">
         <label>Add:</label>
-        <input type="hidden" name="meansOfCalculation" value="addition" />
-        <input type="number" name="firstNumber" />
+        <input type="hidden" class="meansOfCalculation" name="meansOfCalculation" value="addition" />
+        <input type="number" id="addFirstNumberInput" name="firstNumber" />
         <label> with </label>
-        <input type="number" name="secondNumber" />
-        <input type="submit" value="Kör!" />
+        <input type="number" id="addSecondNumberInput" name="secondNumber" />
+        <input type="submit" id="addSubmitButton" value="Kör!" />
     </form>
-    <form asp-action="Calculate" method="post">
+    <form asp-action="Calculate" id="divisionCalculationsForm" method="post">
         <label>Divide:</label>
-        <input type="hidden" name="meansOfCalculation" value="division" />
-        <input type="number" name="firstNumber" />
+        <input type="hidden" class="meansOfCalculation" name="meansOfCalculation" value="division" />
+        <input type="number" id="divideFirstNumberInput" name="firstNumber" />
         <label> by </label>
-        <input type="number" name="secondNumber" />
-        <input type="submit" value="Kör!" />
+        <input type="number" id="divideSecondNumberInput" name="secondNumber" />
+        <input type="submit" id="divideSubmitButton" value="Kör!" />
     </form>
-    <form asp-action="Calculate" method="post">
+    <form asp-action="Calculate" id="multiplicationCalculationsForm" method="post">
         <label>Multiply:</label>
-        <input type="hidden" name="meansOfCalculation" value="multiplication" />
-        <input type="number" name="firstNumber" />
+        <input type="hidden" class="meansOfCalculation" name="meansOfCalculation" value="multiplication" />
+        <input type="number" id="multiplyFirstNumberInput" name="firstNumber" />
         <label> by </label>
-        <input type="number" name="secondNumber" />
-        <input type="submit" value="Kör!" />
+        <input type="number" id="multiplyFecondNumberInput" name="secondNumber" />
+        <input type="submit" id="multiplySubmitButton" value="Kör!" />
     </form>
-    <label>@message</label>
+    <label id="resultLabel">@message</label>
 </div>

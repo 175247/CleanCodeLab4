@@ -12,17 +12,15 @@ services:
     build:
       context: .
       dockerfile: Lab4AdditionCalculationService/Dockerfile
-
+      
   division:
     image: ${DOCKER_REGISTRY-}lab4divisioncalculationservice
     build:
       context: .
       dockerfile: Lab4DivisionCalculationService/Dockerfile
 
-
   multiplication:
     image: ${DOCKER_REGISTRY-}lab4multiplicationcalculationservice
     build:
       context: .
       dockerfile: Lab4MultiplicationCalculationService/Dockerfile
-

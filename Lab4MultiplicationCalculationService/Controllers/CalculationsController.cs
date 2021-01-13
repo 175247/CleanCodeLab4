@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lab4AdditionCalculationService.Controllers
+namespace Lab4MultiplicationCalculationService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

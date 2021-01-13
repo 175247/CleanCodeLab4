@@ -5,24 +5,69 @@ services:
     image: ${DOCKER_REGISTRY-}cleancodelab4
     build:
       context: .
-      dockerfile: CleanCodeLab4/Dockerfile
+      dockerfile: ./CleanCodeLab4/Dockerfile
+    ports:
+      - 5000:5000
+    environment:
+      ASPNETCORE_URLS: http://+:5000
 
   addition:
     image: ${DOCKER_REGISTRY-}lab4additioncalculationservice
     build:
-      context: .
-      dockerfile: Lab4AdditionCalculationService/Dockerfile
+      context: ./Lab4AdditionCalculationService
+      dockerfile: Dockerfile
+    ports:
+      - 5001:5001
+    environment:
+      ASPNETCORE_URLS: http://+:5000
 
   division:
     image: ${DOCKER_REGISTRY-}lab4divisioncalculationservice
     build:
-      context: .
-      dockerfile: Lab4DivisionCalculationService/Dockerfile
-
+      context: ./Lab4DivisionCalculationService
+      dockerfile: Dockerfile
+    ports:
+      - 5002:5002
+    environment:
+      ASPNETCORE_URLS: http://+:5000
 
   multiplication:
     image: ${DOCKER_REGISTRY-}lab4multiplicationcalculationservice
     build:
-      context: .
-      dockerfile: Lab4MultiplicationCalculationService/Dockerfile
+      context: ./Lab4MultiplicationCalculationService
+      dockerfile: Dockerfile
+    ports:
+      - 5003:5003
+    environment:
+      ASPNETCORE_URLS: http://+:5000
 
+  mysql:
+    image: ${DOCKER_REGISTRY-}lab4mysql
+    depends_on:
+      - "db"
+    build:
+      context: .
+      dockerfile: ./Lab4MySql/Dockerfile
+    ports:
+      - 5004:5004
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_ROOT_HOST: 0.0.0.0/0.0.0.0
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

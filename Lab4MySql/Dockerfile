@@ -1,12 +1,12 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
-EXPOSE 5000
+EXPOSE 5004
 
 WORKDIR /src
-COPY ./CleanCodeLab4 ./CleanCodeLab4
+COPY ./Lab4MySql ./Lab4MySql
 COPY ./Lab4Models ./Lab4Models
-RUN dotnet publish "./CleanCodeLab4/CleanCodeLab4.csproj" -c Release -o /app/publish
+RUN dotnet publish "./Lab4MySql/Lab4MySql.csproj" -c Release -o /app/publish
 
 WORKDIR /app/publish
-ENTRYPOINT ["dotnet", "CleanCodeLab4.dll"]
+ENTRYPOINT ["dotnet", "Lab4MySql.dll"]

@@ -11,10 +11,13 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Lab4AdditionCalculationService\Lab4AdditionCalculationService.csproj" />
+    <ProjectReference Include="..\Lab4DivisionCalculationService\Lab4DivisionCalculationService.csproj" />
+    <ProjectReference Include="..\Lab4MultiplicationCalculationService\Lab4MultiplicationCalculationService.csproj" />
   </ItemGroup>
 
 </Project>

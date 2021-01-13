@@ -1,28 +1,28 @@
+using Lab4DivisionCalculationService.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Lab4AdditionCalculationService.Controllers;
 
 namespace AdditionCalculationTests
 {
     [TestClass]
-    public class AdditionCalculationTests
+    public class DivisionCalculationTests
     {
         private readonly CalculationsController _calculator;
 
-        public AdditionCalculationTests()
+        public DivisionCalculationTests()
         {
             _calculator = new CalculationsController();
         }
 
         [TestMethod]
-        public void adding_two_numbers_together_should_return_correct_amount_when_called()
+        public void dividing_two_numbers_should_return_correct_amount_when_called()
         {
             // Arrange
-            int firstNumber = 3;
+            int firstNumber = 12;
             int secondNumber = 4;
-            var expected = 7;
+            var expected = 3;
 
             // Act
-            var actual = _calculator.Add(firstNumber, secondNumber);
+            var actual = _calculator.Divide(firstNumber, secondNumber);
 
             // Assert
             Assert.AreEqual(expected, actual);

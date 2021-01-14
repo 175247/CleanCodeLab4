@@ -79,7 +79,7 @@ namespace CleanCodeLab4.Controllers
         }
 
         [HttpPut]
-        private async Task<IActionResult> StoreCalculationInDatabase(CalculationResult calculationsResult)
+        public async Task<IActionResult> StoreCalculationInDatabase(CalculationResult calculationsResult)
         {
             _context.Add(calculationsResult);
             await _context.SaveChangesAsync();

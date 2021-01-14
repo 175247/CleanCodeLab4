@@ -28,9 +28,9 @@ namespace CleanCodeLab4.Data
             {
                 Console.WriteLine("Seeding data");
                 context.CalculationResults.AddRange(
-                    new CalculationResult { MeansOfCalculation = "addition", FirstNumber = 1m, SecondNumber = 2m, Result = 3m },
-                    new CalculationResult { MeansOfCalculation = "division", FirstNumber = 2m, SecondNumber = 2m, Result = 1m },
-                    new CalculationResult { MeansOfCalculation = "multiplication", FirstNumber = 2m, SecondNumber = 2m, Result = 4m }
+                    new CalculationResult { MeansOfCalculation = "addition", FirstNumber = 1m, SecondNumber = 2m },
+                    new CalculationResult { MeansOfCalculation = "division", FirstNumber = 2m, SecondNumber = 2m },
+                    new CalculationResult { MeansOfCalculation = "multiplication", FirstNumber = 2m, SecondNumber = 2m }
                     );
             }
             else

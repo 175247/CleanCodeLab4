@@ -32,17 +32,12 @@ namespace CleanCodeLab4
             services.AddControllersWithViews();
             services.AddHttpClient();
 
-            // Build the connection string.
-            //var server = Configuration["DbServer"] ?? "localhost";
-            //var server = Configuration["DbServer"] ?? DockerHostMachineIpAddress;
-            //var port = Configuration["DbPort"] ?? "1433";
             var user = Configuration["DbUser"] = "SA";
             var password = Configuration["DbPassword"] ?? "Password!";
             var database = Configuration["Database"] ?? "Calculations";
 
             services.AddDbContext<CalculationDbContext>(options =>
-                options.UseSqlServer($"Server={DockerHostMachineIpAddress},1433;Database={database};User Id={user};Password={password};"));
-                //options.UseSqlServer($"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}"));
+                options.UseSqlServer(@"Server=database;Database=master;User=sa;Password=Your_password123;"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

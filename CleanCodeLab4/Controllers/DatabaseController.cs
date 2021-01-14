@@ -34,5 +34,12 @@ namespace CleanCodeLab4.Controllers
             await _context.SaveChangesAsync();
             return Created("storage", calculationResult);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCalculations()
+        {
+            // Testerna skall återställa databasen till tidigare stadium.
+            return null;
+        }
     }
 }

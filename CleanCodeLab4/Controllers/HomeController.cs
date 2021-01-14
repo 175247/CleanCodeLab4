@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
+using CleanCodeLab4.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanCodeLab4.Controllers
 {
@@ -14,16 +16,18 @@ namespace CleanCodeLab4.Controllers
     {
         private readonly IHttpClientFactory _httpClient;
         private readonly HttpClient _client;
+        private readonly CalculationDbContext _context;
 
         //public HomeController()
         //{
 
         //}
 
-        public HomeController(IHttpClientFactory httpClient)
+        public HomeController(IHttpClientFactory httpClient, CalculationDbContext context)
         {
             _httpClient = httpClient;
             _client = _httpClient.CreateClient();
+            _context = context;
         }
 
         public async Task<IActionResult> Calculate(string meansOfCalculation, decimal firstNumber, decimal secondNumber)
@@ -32,7 +36,21 @@ namespace CleanCodeLab4.Controllers
             var request = CreateHttpRequest(HttpMethod.Get, targetEndpoint, firstNumber, secondNumber);
             var responseContent = await SendRequestAndReadResponse(request);
             var result = HandleResponse(meansOfCalculation, firstNumber, secondNumber, responseContent);
+
+            var calculationsResult = new CalculationResult { MeansOfCalculation = meansOfCalculation, FirstNumber = firstNumber, SecondNumber = secondNumber };
+            _context.Add(calculationsResult);
+            await _context.SaveChangesAsync();
+
             TempData["result"] = result;
+            return View("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var calculations = await _context.CalculationResults.ToListAsync();
+            var result = calculations.FirstOrDefault();
+            TempData["result"] = result.MeansOfCalculation;
             return View("Index");
         }
 

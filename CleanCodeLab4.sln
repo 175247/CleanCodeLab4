@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanCodeLab4Tests", "Clean
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A22CE2B1-545A-4B74-ADA6-3D137961F9A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4DivisionCalculationService", "Lab4DivisionCalculationService\Lab4DivisionCalculationService.csproj", "{A0141241-6808-4CEB-BAEF-590A9610FDF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4DivisionCalculationService", "Lab4DivisionCalculationService\Lab4DivisionCalculationService.csproj", "{A0141241-6808-4CEB-BAEF-590A9610FDF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4MultiplicationCalculationService", "Lab4MultiplicationCalculationService\Lab4MultiplicationCalculationService.csproj", "{42DD4553-F789-4297-8824-EC3EE7CD32E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4MultiplicationCalculationService", "Lab4MultiplicationCalculationService\Lab4MultiplicationCalculationService.csproj", "{42DD4553-F789-4297-8824-EC3EE7CD32E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4Database", "Lab4Database\Lab4Database.csproj", "{526B8F7A-AFAA-4206-A5F1-45F9DF7AD873}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42DD4553-F789-4297-8824-EC3EE7CD32E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{526B8F7A-AFAA-4206-A5F1-45F9DF7AD873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526B8F7A-AFAA-4206-A5F1-45F9DF7AD873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526B8F7A-AFAA-4206-A5F1-45F9DF7AD873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526B8F7A-AFAA-4206-A5F1-45F9DF7AD873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

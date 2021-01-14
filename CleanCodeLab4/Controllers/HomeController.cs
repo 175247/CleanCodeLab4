@@ -76,7 +76,6 @@ namespace CleanCodeLab4.Controllers
             {
                 return meansOfCalculation = "*";
             }
-
             else
             {
                 return "invalid input";

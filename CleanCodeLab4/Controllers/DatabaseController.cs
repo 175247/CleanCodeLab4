@@ -42,8 +42,8 @@ namespace CleanCodeLab4.Controllers
             var calculations = await _context.CalculationResults.ToListAsync();
             calculations.RemoveRange(calculations.Count - numberOfTestsRun, numberOfTestsRun);
             // Update Db
-
-
+            _context.RemoveRange(calculations);
+            await _context.SaveChangesAsync();
             return null;
         }
     }

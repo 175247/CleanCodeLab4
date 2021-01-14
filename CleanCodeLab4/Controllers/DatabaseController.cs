@@ -35,10 +35,15 @@ namespace CleanCodeLab4.Controllers
             return Created("storage", calculationResult);
         }
 
+        // Testerna skall återställa databasen till tidigare stadium.
         [HttpDelete]
-        public async Task<IActionResult> DeleteCalculations()
+        public async Task<IActionResult> DeleteCalculations(int numberOfTestsRun)
         {
-            // Testerna skall återställa databasen till tidigare stadium.
+            var calculations = await _context.CalculationResults.ToListAsync();
+            calculations.RemoveRange(calculations.Count - numberOfTestsRun, numberOfTestsRun);
+            // Update Db
+
+
             return null;
         }
     }

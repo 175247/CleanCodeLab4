@@ -7,6 +7,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
+using CleanCodeLab4.Data;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace CleanCodeLab4.Controllers
 {
@@ -14,27 +17,27 @@ namespace CleanCodeLab4.Controllers
     {
         private readonly IHttpClientFactory _httpClient;
         private readonly HttpClient _client;
+        private readonly CalculationDbContext _context;
 
-        //public HomeController()
-        //{
-
-        //}
-
-        public HomeController(IHttpClientFactory httpClient)
+        public HomeController(IHttpClientFactory httpClient, CalculationDbContext context)
         {
             _httpClient = httpClient;
             _client = _httpClient.CreateClient();
+            _context = context;
         }
 
         public async Task<IActionResult> Calculate(string meansOfCalculation, decimal firstNumber, decimal secondNumber)
         {
-            var targetEndpoint = meansOfCalculation;
-            var request = CreateHttpRequest(HttpMethod.Get, targetEndpoint, firstNumber, secondNumber);
+            var request = CreateHttpRequest(HttpMethod.Get, meansOfCalculation, firstNumber, secondNumber);
             var responseContent = await SendRequestAndReadResponse(request);
-            var result = HandleResponse(meansOfCalculation, firstNumber, secondNumber, responseContent);
-            TempData["result"] = result;
+            var calculationsResult = new CalculationResult { MeansOfCalculation = meansOfCalculation, FirstNumber = firstNumber, SecondNumber = secondNumber };
+            await StoreCalculationInDatabase(calculationsResult);
+            var resultMessage = FormatResultMessage(meansOfCalculation, firstNumber, secondNumber, responseContent);
+
+            TempData["result"] = resultMessage;
             return View("Index");
         }
+
 
         private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, string targetEndpoint, decimal firstNumber, decimal secondNumber)
         {
@@ -52,7 +55,7 @@ namespace CleanCodeLab4.Controllers
             return content;
         }
 
-        private string HandleResponse(string meansOfCalculation, decimal firstNumber, decimal secondNumber, string responseContent)
+        private string FormatResultMessage(string meansOfCalculation, decimal firstNumber, decimal secondNumber, string responseContent)
         {
             meansOfCalculation = ChangeStringValue(meansOfCalculation);
             var result = string.Format("{0} {1} {2} = {3}", firstNumber, meansOfCalculation, secondNumber, responseContent);
@@ -62,24 +65,59 @@ namespace CleanCodeLab4.Controllers
 
         private string ChangeStringValue(string meansOfCalculation)
         {
-            if (meansOfCalculation == "addition")
+            switch (meansOfCalculation)
             {
-                return meansOfCalculation = "+";
+                case "addition":
+                    return "+"; 
+                case "division":
+                    return "/";
+                case "multiplication":
+                    return "*";
+                default:
+                    return "invalid input";
             }
-            
-            if (meansOfCalculation == "division")
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> StoreCalculationInDatabase(CalculationResult calculationsResult)
+        {
+            _context.Add(calculationsResult);
+            await _context.SaveChangesAsync();
+            return Created("storageUri", calculationsResult);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var calculations = await _context.CalculationResults.ToListAsync();
+            if (calculations.Count == 0)
             {
-                return meansOfCalculation = "/";
+                return NoContent();
             }
 
-            if (meansOfCalculation == "multiplication")
-            {
-                return meansOfCalculation = "*";
-            }
+            return Ok(calculations);
+        }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCalculations([FromQuery] int numberOfTestsRun)
+        {
+            var calculations = await _context.CalculationResults.ToListAsync();
+            if (numberOfTestsRun <= 0
+                || numberOfTestsRun > calculations.Count)
+            {
+                return BadRequest();
+            }
+            else if (calculations.Count == 0)
+            {
+                return NotFound();
+            }
             else
             {
-                return "invalid input";
+                var calculationsToRemove = calculations.TakeLast(numberOfTestsRun);
+                _context.RemoveRange(calculationsToRemove);
+                await _context.SaveChangesAsync();
+
+                return Ok();
             }
         }
 

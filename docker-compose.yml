@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: CleanCodeLab4/Dockerfile
+    ports:
+      - "80:80"
 
   addition:
     image: ${DOCKER_REGISTRY-}lab4additioncalculationservice
@@ -18,7 +20,6 @@ services:
     build:
       context: .
       dockerfile: Lab4DivisionCalculationService/Dockerfile
-
 
   multiplication:
     image: ${DOCKER_REGISTRY-}lab4multiplicationcalculationservice

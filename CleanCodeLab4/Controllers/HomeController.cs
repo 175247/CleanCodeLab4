@@ -58,9 +58,19 @@ namespace CleanCodeLab4.Controllers
                 TypeOfCalculation = ChangeStringValue(meansOfCalculation)
             });
 
-            await _client.SendAsync(saveRequest);
+            var jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var json = await (await _client.SendAsync(saveRequest)).Content.ReadAsStringAsync();
+            var entity = JsonSerializer.Deserialize<Calculation>(json, jsonOptions);
+
+            var id = entity.CalculationId;
 
             TempData["result"] = result;
+            TempData["entityId"] = id.ToString();
+
             return View("Index");
 
             //return new OkObjectResult(result);

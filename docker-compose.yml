@@ -45,7 +45,7 @@ services:
       context: .
       dockerfile: ./Lab4MySql/Dockerfile
     expose:
-      - 6000
+      - 5000
 
   db:
     image: mysql
@@ -69,6 +69,16 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  cypress:
+    image: cypress/included:3.4.1
+    networks:
+      - Lab4Network
+    depends_on:
+      - cleancodelab4
+    working_dir: /e2e
+    volumes:
+      - ./e2e:/e2e
 
 networks:
   Lab4Network: {}

@@ -15,7 +15,7 @@ namespace Lab4MySql
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseUrls("http://0.0.0.0:80", "http://0.0.0.0:6000");
+                    webBuilder.UseUrls("http://0.0.0.0:80", "http://0.0.0.0:5000");
                 });
     }
 }

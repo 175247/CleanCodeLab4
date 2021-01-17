@@ -66,11 +66,10 @@ namespace Lab4MySql
         [HttpPost]
         public async Task<ActionResult<Calculation>> PostCalculation([FromBody] Calculation calculation)
         {
-            _calculationDbContext.Calculations.Add(calculation);
+            var entity = _calculationDbContext.Calculations.Add(calculation).Entity;
             await _calculationDbContext.SaveChangesAsync();
 
-            return Ok();
-            //return CreatedAtAction("GetOrder", new { id = calculation.CalculationId}, calculation);
+            return new OkObjectResult(entity);
         }
 
         [HttpDelete("{id}")]

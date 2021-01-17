@@ -1,5 +1,6 @@
 ﻿@{
     string message = "";
+    string entityId = "";
     if (TempData["result"] == null)
     {
         message = "";
@@ -7,6 +8,7 @@
     else
     {
         message = TempData["result"].ToString();
+        entityId = TempData["entityId"].ToString();
     }
 }
 
@@ -14,29 +16,30 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
-    <form asp-action="Calculate" method="post">
+    <form id="additionForm" asp-action="Calculate" method="post">
         <label>Add:</label>
         <input type="hidden" name="meansOfCalculation" value="addition" />
-        <input type="number" name="firstNumber" />
+        <input type="number" id="additionFirstNumber" name="firstNumber" />
         <label> with </label>
-        <input type="number" name="secondNumber" />
-        <input type="submit" value="Sum" />
+        <input type="number" id="additionSecondNumber" name="secondNumber" />
+        <input type="submit" id="additionSubmit" value="Sum" />
     </form>
-    <form asp-action="Calculate" method="post">
+    <form id="divideForm" asp-action="Calculate" method="post">
         <label>Divide:</label>
         <input type="hidden" name="meansOfCalculation" value="division" />
         <input type="number" name="firstNumber" />
         <label> by </label>
         <input type="number" name="secondNumber" />
-        <input type="submit" value="Divide" />
+        <input type="submit" id="divideSubmit" value="Divide" />
     </form>
-    <form asp-action="Calculate" method="post">
+    <form id="multiplyForm" asp-action="Calculate" method="post">
         <label>Multiply:</label>
         <input type="hidden" name="meansOfCalculation" value="multiplication" />
         <input type="number" name="firstNumber" />
         <label> by </label>
         <input type="number" name="secondNumber" />
-        <input type="submit" value="Multiply" />
+        <input type="submit" id="multiplySubmit" value="Multiply" />
     </form>
-    <label>@message</label>
+    <label id="resultLabel">@message</label>
+    <input id="idInput" type="hidden" value=@entityId />
 </div>

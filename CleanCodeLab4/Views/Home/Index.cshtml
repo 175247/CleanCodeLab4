@@ -1,6 +1,7 @@
 ﻿@{
     string message = "";
     string entityId = "";
+
     if (TempData["result"] == null)
     {
         message = "";
@@ -24,6 +25,7 @@
         <input type="number" id="additionSecondNumber" name="secondNumber" />
         <input type="submit" id="additionSubmit" value="Sum" />
     </form>
+
     <form id="divideForm" asp-action="Calculate" method="post">
         <label>Divide:</label>
         <input type="hidden" name="meansOfCalculation" value="division" />
@@ -32,6 +34,7 @@
         <input type="number" name="secondNumber" />
         <input type="submit" id="divideSubmit" value="Divide" />
     </form>
+
     <form id="multiplyForm" asp-action="Calculate" method="post">
         <label>Multiply:</label>
         <input type="hidden" name="meansOfCalculation" value="multiplication" />
@@ -40,6 +43,8 @@
         <input type="number" name="secondNumber" />
         <input type="submit" id="multiplySubmit" value="Multiply" />
     </form>
+
     <label id="resultLabel">@message</label>
     <input id="idInput" type="hidden" value=@entityId />
+
 </div>

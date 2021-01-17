@@ -67,6 +67,7 @@ namespace Lab4MySql
         public async Task<ActionResult<Calculation>> PostCalculation([FromBody] Calculation calculation)
         {
             var entity = _calculationDbContext.Calculations.Add(calculation).Entity;
+            
             await _calculationDbContext.SaveChangesAsync();
 
             return new OkObjectResult(entity);

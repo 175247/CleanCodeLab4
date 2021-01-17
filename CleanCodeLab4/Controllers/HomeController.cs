@@ -10,8 +10,6 @@ using System.Text;
 
 namespace CleanCodeLab4.Controllers
 {
-    //[Route("api/[controller]")]
-    //[ApiController]
     public class HomeController : Controller
     {
         private readonly IHttpClientFactory _httpClient;
@@ -37,7 +35,6 @@ namespace CleanCodeLab4.Controllers
             _client = _httpClient.CreateClient();
         }
 
-        //[HttpGet]
         public async Task<IActionResult> Calculate(string meansOfCalculation, int firstNumber, int secondNumber)
         {
             if (!OperatorTable.ContainsKey(meansOfCalculation)) 
@@ -72,9 +69,7 @@ namespace CleanCodeLab4.Controllers
             TempData["entityId"] = id.ToString();
 
             return View("Index");
-
-            //return new OkObjectResult(result);
-        } 
+        }
 
         private HttpRequestMessage CreateHttpRequest(HttpMethod httpMethod, string targetEndpoint, decimal firstNumber, decimal secondNumber)
         {
@@ -82,6 +77,7 @@ namespace CleanCodeLab4.Controllers
             var query = string.Format("?firstNumber={0}&secondNumber={1}", firstNumber, secondNumber);
             var requestUri = baseUri + query;
             var request = new HttpRequestMessage(httpMethod, requestUri);
+
             return request;
         }
 
@@ -89,6 +85,7 @@ namespace CleanCodeLab4.Controllers
         {
             var baseUri = "http://mysql/api/Calculations";
             var request = new HttpRequestMessage(HttpMethod.Post, baseUri);
+            
             request.Content = new StringContent(JsonSerializer.Serialize(calculation), Encoding.UTF8, "application/json");
             
             return request;
@@ -98,6 +95,7 @@ namespace CleanCodeLab4.Controllers
         {
             var response = await _client.SendAsync(request);
             var content = await response.Content.ReadAsStringAsync();
+
             return content;
         }
 
@@ -105,6 +103,7 @@ namespace CleanCodeLab4.Controllers
         {
             var usedOperator = ChangeStringValue(meansOfCalculation);
             var result = string.Format("{0} {1} {2} = {3}", firstNumber, usedOperator, secondNumber, responseContent);
+
             return result;
         }
 

@@ -1,15 +1,11 @@
-﻿using CleanCodeLab4.Models;
+﻿using CleanCodeLab4.Data;
+using CleanCodeLab4.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net.Http;
-using CleanCodeLab4.Data;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace CleanCodeLab4.Controllers
 {

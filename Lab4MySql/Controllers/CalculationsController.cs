@@ -37,7 +37,7 @@ namespace Lab4MySql
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCalculation(int id, Calculation calculation)
+        public async Task<IActionResult> PutCalculation([FromQuery] int id, [FromBody] Calculation calculation)
         {
             if(id != calculation.CalculationId)
             {

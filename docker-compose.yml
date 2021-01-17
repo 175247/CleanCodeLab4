@@ -44,6 +44,8 @@ services:
     build:
       context: .
       dockerfile: ./Lab4MySql/Dockerfile
+    expose:
+      - 6000
 
   db:
     image: mysql

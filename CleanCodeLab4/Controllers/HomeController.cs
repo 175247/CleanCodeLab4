@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Lab4Models;
 using System.Text.Json;
+using System.Text;
 
 namespace CleanCodeLab4.Controllers
 {
@@ -76,9 +77,9 @@ namespace CleanCodeLab4.Controllers
 
         private HttpRequestMessage SendResultToDatabase (Calculation calculation)
         {
-            var baseUri = "http://mysql/api/calculations";
+            var baseUri = "http://mysql/api/Calculations";
             var request = new HttpRequestMessage(HttpMethod.Post, baseUri);
-            request.Content = new StringContent(JsonSerializer.Serialize(calculation));
+            request.Content = new StringContent(JsonSerializer.Serialize(calculation), Encoding.UTF8, "application/json");
             
             return request;
         }

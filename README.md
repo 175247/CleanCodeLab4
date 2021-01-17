@@ -17,7 +17,7 @@ Varje projekt är sin egen container.
 Alexander Molnar
 
 Arkitektur:
-CleanCodeLab4 är min frontend som tar emot input från UI't.
+CleanCodeLab4 är vår frontend som tar emot input från UI't.
 När UIt's inputs har blivit submittade kallas respektive microservice (i form av de olika uträknelseformerna) via ett
 API-anrop, där sedan svaret visas för användaren i UI't, och även sparas ner i databasen, där jag valde att använda mig
 av MySQL.
